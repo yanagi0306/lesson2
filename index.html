@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>JacaScript</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>FizzBuzz問題</h1>
+  <p>FizzNum: <input id="fizz" type="text" placeholder="整数を入力してください"></p>
+  <p>BuzzNum:<input id="buzz" type="text" placeholder="整数を入力してください"></p>
+  <button>実行</button>
+  <h3>【出力】</h3>
+  <ul>
+
+  </ul>
+
+  <script>
+    `use strict`;
+    {
+      document.querySelector(`button`).addEventListener(`click`, () => {
+        const numberFizz = Number(document.getElementById(`fizz`).value);
+        const numberBuzz = Number(document.getElementById(`buzz`).value);
+
+        for (let i = 1; i < 100; i++) {
+          let number = document.createElement(`li`);
+
+          if (Number.isInteger(numberFizz) == false || Number.isInteger(numberBuzz) == false
+            || numberFizz == "" || numberBuzz == "") {
+            number.textContent = `整数値を入力してください`;
+            document.querySelector(`ul`).appendChild(number);
+            break;
+          } else if (i % numberFizz == 0 && i % numberBuzz == 0) {
+            number.textContent = `FizzBuzz${i}`;
+            document.querySelector(`ul`).appendChild(number);
+          } else if (i % numberBuzz == 0) {
+            number.textContent = `Buzz${i}`;
+            document.querySelector(`ul`).appendChild(number);
+          } else if (i % numberFizz == 0) {
+            number.textContent = `Fizz${i}`;
+            document.querySelector(`ul`).appendChild(number);
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
